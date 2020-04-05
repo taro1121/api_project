@@ -13,7 +13,7 @@ Technology in use: HTML/CSS/JS/jQuery/YouTubeDataAPI/node.js
 
 Support: Chrome (Desktop and Mobile)
 
-UI: See wireframe.jpg for the visual structure.
+UI: See wireframe.HEIC file in this repository for the visual structure.
 
 Limitation: Depends on the data availability of the API.  May not support some search criteria/pagination/mobile.
 There may be some limitations for showing videos (country, language, minimum view,,,).
