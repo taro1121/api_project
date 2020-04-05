@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Shintaro's Bicycle YouTube API Project</title>
+		<style media="screen">
+			#target {
+			width: 550px;
+			height: 200px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="target"></div>
+		<input type="text" id="keyword">
+		<button id="search">Search</button>
+		<script src="https://maps.googleapis.com/maps/api/js?lang=EN&key=AIzaSyDAPShIt5LqMJq6FjwxUKiPADBzeN15ck8&callback=initMap&libraries=places" async defer></script>
+		<script>
+		function initMap(){
+			'use strict';
+
+			var target = document.getElementById('target');
+			var map;
+			var tokyo = {lat: 35.681167, lng: 139.767052};
+			var service;
+			// var marker;
+			// var infoWindow;
+
+// Show map of tokyo
+			map = new google.maps.Map(target, {
+				center: tokyo,
+				zoom: 15
+				// disableDefaultUI: true,
+				// zoomControl: true,
+				// mapTypeId: 'hybrid',
+				// clickableIcons: false
+			});
+
+// find browser location
+			// if (!navigator.geolocation) {
+			// 	alert('Geolocation is not supported');
+			// 	return;
+			// }
+
+// Show map of browser location
+			// navigator.geolocation.getCurrentPosition(function(position) {
+			// 	map = new google.maps.Map(target, {
+			// 		center: {
+			// 			lat: position.coords.latitude,
+			// 			lng: position.coords.longitude
+			// 		},
+			// 		zoom: 15
+			// 	})
+			// }, function() {
+			// 		alert('Geolocation Failed!');
+			// 		return;
+			// });
+			//
+
+// search around tokyo area by keyword
+			document.getElementById('search').addEventListener('click', function() {
+				service = new google.maps.places.PlacesService(map);
+				service.nearbySearch({
+					location: tokyo,
+					radius: '500',
+					name: document.getElementById('keyword').value
+					}, function(results, status) {
+						var i;
+						if (status === google.maps.places.PlacesServiceStatus.OK) {
+							for (i = 0; i < results.length; i++) {
+									new google.maps.Marker({
+										map: map,
+										position: results[i].geometry.location,
+										title: results[i].name
+									});
+							}
+						} else {
+							alert('Failed: ' + status);
+							return;
+						}
+					});
+			});
+
+// click on map will drop a flag with latitude and longitude info.
+			map.addListener('click', function(e) {
+				var marker = new google.maps.Marker({
+					position: e.latLng,
+					map: this,
+					animation: google.maps.Animation.DROP
+				});
+				var infoWindow = new google.maps.InfoWindow({
+					content: e.latLng.toString()
+				});
+				marker.addListener('click', function(){
+					infoWindow.open(map, marker);
+				});
+			});
+
+
+			// infoWindow = new google.maps.InfoWindow({
+			// 	position: tokyo,
+			// 	content: '<strong>Hello!  Hello!<strong>',
+			// 	maxWidth: 100
+			// });
+
+			// infoWindow.open(map);
+
+			// map.addListener('click', function(e){
+			// 	console.log(e.latLng.lat());
+			// 	console.log(e.latLng.lng());
+			// 	console.log(e.latLng.toString());
+			// 	this.panTo(e.latLng);
+			// });
+
+			// marker = new google.maps.Marker({
+			// 	position: tokyo,
+			// 	map: map,
+			// 	title: 'Tokyo!',
+			// 	icon: {
+			// 			url: 'icon.png',
+			// 			scaledSize: new google.maps.Size(24,24)
+			// 				},
+			// 	animation: google.maps.Animation.BOUNCE
+			// });
+
+			// map.addListener('click', function(e) {
+			// 	var marker = new google.maps.Marker({
+			// 		position: e.latLng,
+			// 		map: map,
+			// 		title: e.latLng.toString(),
+			// 		animation: google.maps.Animation.DROP
+			// 	});
+			// 	marker.addListener('click', function(){
+			// 		this.setMap(null);
+			// 	});
+			// });
+
+		}
+		</script>
+
+	</body>
+</html>
