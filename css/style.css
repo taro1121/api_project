@@ -1,0 +1,88 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+div {
+  display: block;
+}
+p, ul, li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+ul {
+  diplay: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+#wrapper {
+  background-color: yellow;
+  width: 950px;
+  margin: 0 auto;
+}
+#header {
+  background-color: red;
+  width: 950px;
+  height: 60px;
+}
+#header-wrap {
+  margin: 0;
+  list-style: none;
+  display: flex;
+  width: 100%;
+}
+#main {
+  background-color: green;
+  width: 950px;
+  overflow: hidden;
+}
+#contents {
+  background-color: orange;
+  float: left;
+  width: 950px;
+}
+ul.dmenu {
+  background-color: brown;
+  list-style-type: none;
+  margin: 10px 0 0 0;
+  padding: 0;
+  display: flex;
+}
+.movie_field {
+  background-color: lightblue;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-top: 10px;
+}
+
+
+#page-field {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+.page-navi {
+  margin: 15px 0 0 0;
+  padding: 10px 10px 5px;
+  background: #eee;
+  text-align: center;
+}
+
+#footer {
+  background-color: blue;
+  margin-top: 10px;
+  text-align: center;
+  clear: both;
+  width: 950px;
+  height: 50px;
+}
