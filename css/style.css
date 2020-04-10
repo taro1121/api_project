@@ -3,6 +3,10 @@
   margin: 0;
   font-size: 14px;
 }
+a {
+  color: black;
+  /* text-decoration: none; */
+}
 div {
   display: block;
 }
@@ -25,12 +29,12 @@ ul {
   padding-inline-start: 40px;
 }
 #wrapper {
-  background-color: yellow;
+  /* background-color: yellow; */
   width: 950px;
   margin: 0 auto;
 }
 #header {
-  background-color: red;
+  background-color: #34CEBA;
   width: 950px;
   height: 60px;
 }
@@ -40,25 +44,64 @@ ul {
   display: flex;
   width: 100%;
 }
+#header-logo {
+  padding: 13px 0 0 10px;
+  width: 280px;
+}
+#header-search {
+  padding-top: 10px;
+  width: 300px;
+}
+.search_container input[type="text"] {
+  padding-bottom: 1px;
+  background: #FFFFFF;
+  border: none;
+  height: 30px;
+  border: 1px solid #888888;
+}
+.search_container input[type="submit"] {
+    cursor: pointer;
+    font-family: FontAwesome;
+    border: none;
+    background: #DDDDDD;
+    color: #555555;
+    outline: none;
+    width: 3.0em;
+    height: 31px;
+}
+
+
+
+
 #main {
-  background-color: green;
+  /* background-color: green; */
   width: 950px;
   overflow: hidden;
 }
 #contents {
-  background-color: orange;
+  /* background-color: orange; */
   float: left;
   width: 950px;
 }
 ul.dmenu {
-  background-color: brown;
+  /* background-color: #33D1DD; */
   list-style-type: none;
   margin: 10px 0 0 0;
   padding: 0;
   display: flex;
 }
+ul.dmenu li {
+    /* z-index: 1000; */
+    position: relative;
+    /* padding: 5px; */
+    width: 150px;
+    /* background-color: #FFFFFF; */
+    font-weight: bold;
+    font-size: 14px;
+}
+
 .movie_field {
-  background-color: lightblue;
+  background-color: #FFFFFF;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -79,8 +122,9 @@ ul.dmenu {
 }
 
 #footer {
-  background-color: blue;
-  margin-top: 10px;
+  background-color: #34CEBA;
+  /* margin-top: 10px; */
+  padding-top: 10px;
   text-align: center;
   clear: both;
   width: 950px;
