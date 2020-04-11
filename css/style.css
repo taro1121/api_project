@@ -37,6 +37,7 @@ ul {
   background-color: #34CEBA;
   width: 950px;
   height: 60px;
+  /* position: fixed; */
 }
 #header-wrap {
   margin: 0;
@@ -71,8 +72,6 @@ ul {
 }
 
 
-
-
 #main {
   /* background-color: green; */
   width: 950px;
@@ -82,6 +81,9 @@ ul {
   /* background-color: orange; */
   float: left;
   width: 950px;
+}
+.dmenu {
+  /* position: fixed; */
 }
 ul.dmenu {
   /* background-color: #33D1DD; */
@@ -100,6 +102,10 @@ ul.dmenu li {
     font-size: 14px;
 }
 
+
+#results {
+  list-style-type: none;
+}
 .movie_field {
   background-color: #FFFFFF;
   display: flex;
@@ -120,6 +126,7 @@ ul.dmenu li {
   background: #eee;
   text-align: center;
 }
+
 
 #footer {
   background-color: #34CEBA;
