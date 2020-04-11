@@ -3,23 +3,30 @@ function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{
 
 $(function() {
   // When logo is clicked, render "Tour de France Videos(10)"
+  // $("#NewLogo").on("click", function(e) {
+  //   e.preventDefault();
+    // var request = gapi.client.youtube.search.list({
+    //   part: "snippet",
+    //   type: "video",
+    //   q: "Tour de France",
+    //   // q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
+    //   maxResults: 10,
+    //   order: "date",
+    //   // order: "viewCount",
+    //   publishedAfter: "2015-01-01T00:00:00Z"
+    // });
+
+// When logo is clicked, render "Tour de France Videos(10)"
+// creatded from the json object made by response_sample.json file
   $("#NewLogo").on("click", function(e) {
     e.preventDefault();
-    var request = gapi.client.youtube.search.list({
-      part: "snippet",
-      type: "video",
-      q: "Tour de France",
-      // q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
-      maxResults: 10,
-      order: "date",
-      // order: "viewCount",
-      publishedAfter: "2015-01-01T00:00:00Z"
-    });
+      $.getJSON("response_sample.json", function(json) {
+        var results = json; // this will show the info it in firebug console
 
     // execute the request
-    request.execute(function(response) {
+    // request.execute(function(response) {
       // console.log(response);
-      var results = response.result;
+      // var results = response.result;
         $("#results").html("");
         $.each(results.items, function(index, item) {
           $.get("item.html", function(data) {
@@ -28,7 +35,7 @@ $(function() {
         });
         resetVideoHeight();
       });
-  });
+    });
 
   //When search is submitted, render videos with the keyword by date
   $("form").on("submit", function(e) {
@@ -59,7 +66,6 @@ $(function() {
   });
   $(window).on("resize", resetVideoHeight);
 });
-
 
 
 function resetVideoHeight() {
