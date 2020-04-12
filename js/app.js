@@ -1,89 +1,54 @@
 function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
 
-
 $(function() {
-  // When logo is clicked, render "Tour de France Videos(10)"
-  // $("#NewLogo").on("click", function(e) {
-  //   e.preventDefault();
-    // var request = gapi.client.youtube.search.list({
-    //   part: "snippet",
-    //   type: "video",
-    //   q: "Tour de France",
-    //   // q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
-    //   maxResults: 10,
-    //   order: "date",
-    //   // order: "viewCount",
-    //   publishedAfter: "2015-01-01T00:00:00Z"
-    // });
-
-// When logo is clicked, render "Tour de France Videos(10)"
-// creatded from the json object made by response_sample.json file
+// When logo is clicked, render dummy "Tour de France Videos(10)"
+// creatded from the json object made by response_sample.json file.
   $("#NewLogo").on("click", function(e) {
     e.preventDefault();
+    $(".welcome-msg").html("");
       $.getJSON("response_sample.json", function(json) {
-        var results_data = json; // this will show the info it in firebug console
-
+        var results_data = json;
       resultsLoop(results_data);
-
-    // execute the request
-    // request.execute(function(response) {
-      // console.log(response);
-      // var results = response.result;
-
-        // $("#results").html("");
-        // $.each(results_data.items, function(index, item) {
-        //   $.get("item.html", function(data) {
-        //     $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
-        //   });
-        // });
-        // resetVideoHeight();
-
       });
     });
 
-  //When search is submitted, render videos with the keyword by date
+  //When search is submitted, render "Tour de France" videos with the keyword ordered by date
   $("form").on("submit", function(e) {
     e.preventDefault();
-    // prepare the request
-    var request = gapi.client.youtube.search.list({
+    $(".welcome-msg").html("");
+    let base_keyword = "Tour+de+France+";
+    let keyword = base_keyword + encodeURIComponent($("#search").val()).replace(/%20/g, "+");
+    let request = gapi.client.youtube.search.list({
       part: "snippet",
       type: "video",
-      // q: "Tour de France",
-      q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
+      q: keyword,
       maxResults: 10,
-      order: "date",
-      // order: "viewCount",
+      order: "date",// order: "viewCount",
       publishedAfter: "2015-01-01T00:00:00Z"
     });
+
     // execute the request
     request.execute(function(response) {
-      // console.log(response);
       var results = response.result;
         $("#results").html("");
-        $.each(results.items, function(index, item) {
-          $.get("item.html", function(data) {
-            $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
-          });
-        });
+        resultsLoop(results);
         resetVideoHeight();
     });
   });
   $(window).on("resize", resetVideoHeight);
 });
 
-
 function resetVideoHeight() {
   $(".video").css("height", $("#results").width() * 9/16)
 }
-
 
 function resultsLoop(data){
   $("#results").html("");
   $.each(data.items, function(i, item) {
     let thumb = item.snippet.thumbnails.medium.url;
-    let channel_title = item.snippet.channelTitle.substring(0,40);
-    let title = item.snippet.title.substring(0,40);
-    let desc = item.snippet.description.substring(0,40);
+    let channel_title = item.snippet.channelTitle.substring(0,45);
+    let title = item.snippet.title.substring(0,45);
+    let desc = item.snippet.description.substring(0,45);
     let pdate = new Date(item.snippet.publishedAt);
     let date = (pdate.getMonth() + 1)+ "/" + pdate.getDate()  + "/" + pdate.getFullYear();
 
@@ -104,10 +69,9 @@ function resultsLoop(data){
     </li>
     `);
 
-  $("#header-modify").html(`<p>Last Updated:<br />${time}`);
+  $("#footer-modify").html(`<p>Last Updated: ${time}`);
   });
 }
-
 
 function init() {
     gapi.client.setApiKey("AIzaSyDAPShIt5LqMJq6FjwxUKiPADBzeN15ck8");

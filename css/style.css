@@ -90,6 +90,7 @@ ul.dmenu {
   list-style-type: none;
   margin: 10px 0 0 0;
   padding: 0;
+  padding-left: 5px;
   display: flex;
 }
 ul.dmenu li {
@@ -103,9 +104,23 @@ ul.dmenu li {
 }
 
 
+.welcome-msg {
+  text-align: center;0010fd
+}
 #results {
   list-style-type: none;
 }
+
+#results li {
+  /* display: flex; */
+  float: left;
+  /* width: 465px; */
+  width: 350px;
+  height: 250px;
+  margin: 0px 5px 10px 5px;
+}
+
+
 .movie_field {
   background-color: #FFFFFF;
   display: flex;
@@ -136,4 +151,8 @@ ul.dmenu li {
   clear: both;
   width: 950px;
   height: 50px;
+}
+
+#footer-modify {
+  font-size: 80%;
 }

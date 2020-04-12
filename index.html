@@ -18,11 +18,10 @@
 						</li>
 						<li id="header-search">
 							<form action="/" method="POST" class="search_container">
-								<input type="text" name="keyword" value class="search-box" placeholder="Keyword Search" maxlength="20" style="width: 200px; height: 40px">
+								<input type="text" id="search" name="keyword" value class="search-box" placeholder="Keyword Search" maxlength="20" style="width: 200px; height: 40px">
 								<input type="submit" value="Search">
 							</form>
 						</li>
-						<li id="header-modify">Place holder</li>
 					</ul>
 			</div>
 			<div id="main">
@@ -35,11 +34,15 @@
 					</ul>
 
 					<br>
-					<br>
+					<div class="welcome-msg">
+						<p>Welcome, please click <font color="0000ff">YouTube Collection 2020</font> logo in the header to see the latest videos.</p>
+					</div>
 					<div id="results"></div>
 
 					<ul class="movie_field">
-						<li>
+
+
+						<!-- <li>
 							<div class="movie-img">
 								<a href="./detail.php?vid=NUXoTFXDHyU">
 									<img data-src="https://i.ytimg.com/vi/NUXoTFXDHyU/mqdefault.jpg" class=" lazyloaded" src="https://i.ytimg.com/vi/NUXoTFXDHyU/mqdefault.jpg">
@@ -51,7 +54,7 @@
 							<div class="movie_data">
 								<p>2020/04/03</p><p>6.6万回</p>
 							</div>
-						</li>
+						</li> -->
 					</ul>
 
 
@@ -63,11 +66,12 @@
 							<li>Previous</li>
 							<li>Next</li>
 						</ul>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<div id="footer">
 				<span>Shintaro's YouTube Collection 2020 is made by <a href="https://developers.google.com/youtube/v3" target="_blank">YouTube Data API</a> &copy;2020</span>
+				<span id="footer-modify"></span>
 					<!-- <img src="/footer-logo.png" alt="footer logo" id="footer-yt-logo"> -->
 			</div>
 		</div>
