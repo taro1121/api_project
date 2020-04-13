@@ -76,39 +76,6 @@
   },
   {
    "kind": "youtube#searchResult",
-   "etag": "\"tnVOtk4NeGU6nDncDTE5m9SmuHc/QZqsziwT0Ni22fda2JvhPdedaHA\"",
-   "id": {
-    "kind": "youtube#video",
-    "videoId": "exmU69_Zgac"
-   },
-   "snippet": {
-    "publishedAt": "2020-04-10T17:04:23.000Z",
-    "channelId": "UC_Nai9XJYwejFgxgdnC4kWQ",
-    "title": "Cyclisme Tour de France 2019 12e étape Toulouse   Bagnères de Bigorre",
-    "description": "Tour De France.",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/exmU69_Zgac/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/exmU69_Zgac/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/exmU69_Zgac/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
-    },
-    "channelTitle": "Diego Macia",
-    "liveBroadcastContent": "none"
-   }
-  },
-  {
-   "kind": "youtube#searchResult",
    "etag": "\"tnVOtk4NeGU6nDncDTE5m9SmuHc/ScwcGZCS2MVMtugsN_VQgo-0fnU\"",
    "id": {
     "kind": "youtube#video",

@@ -2,8 +2,8 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Shintaro's YouTube Collection 2020</title>
-		<meta name="description" content="List of Bicycle related YouTube videos.">
+		<title>Tour de France YouTube Collection</title>
+		<meta name="description" content="List of Tour de France related YouTube videos.">
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 		<link href="css/style.css" rel="stylesheet" type="text/css"></style>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -28,14 +28,15 @@
 				<div id="contents">
 					<ul class="dmenu">
 						<li>Sort by</li>
-						<li><a href="/?order=new">Latest</a></li>
-						<li><a href="/?order=view">Views</a></li>
-						<li><a href="/?order=favo">Favorites</a></li>
+						<li><div id="bydate"><a href="/">Date</a></div></li>
+						<li><div id="byviewcount"><a href="/">Views Count</a></div></li>
+						<li><div id="byrating"><a href="/">Rating</a></div></li>
+						<li><div id="byrelevance"><a href="/">Relevance</a></div></li>
 					</ul>
 
 					<br>
 					<div class="welcome-msg">
-						<p>Welcome, please click <font color="0000ff">YouTube Collection 2020</font> logo in the header to see the latest videos.</p>
+						<p>Welcome, please click <font color="0000ff">Tour de France YouTube Collection</font> logo in the header.  10 YouTube videos related to "Tour de France" and published after 1/1/2015 will be listed by published date.  You can sort the list by published date, view count, rating, and relevance.  Please use search box if you know what you are looking for.  Thanks.</p>
 					</div>
 					<div id="results"></div>
 
@@ -70,12 +71,10 @@
 				</div>
 			</div>
 			<div id="footer">
-				<span>Shintaro's YouTube Collection 2020 is made by <a href="https://developers.google.com/youtube/v3" target="_blank">YouTube Data API</a> &copy;2020</span>
+				<span>Tour de France YouTube Collection is made by <a href="https://developers.google.com/youtube/v3" target="_blank">YouTube Data API</a> &copy;2020</span>
 				<span id="footer-modify"></span>
-					<!-- <img src="/footer-logo.png" alt="footer logo" id="footer-yt-logo"> -->
 			</div>
 		</div>
-
 
 		<script src="js/jquery-3.3.1.min.js"></script>
 		<script src="js/app.js"></script>

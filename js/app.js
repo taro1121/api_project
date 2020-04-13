@@ -1,33 +1,29 @@
-function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
+const base_keyword = "Tour+de+France+";
 
 $(function() {
-// When logo is clicked, render dummy "Tour de France Videos(10)"
-// creatded from the json object made by response_sample.json file.
+// When logo is clicked, render dummy "Tour de France Videos(10)" creatded from the json object made by response_sample.json file.
   $("#NewLogo").on("click", function(e) {
     e.preventDefault();
     $(".welcome-msg").html("");
-      $.getJSON("response_sample.json", function(json) {
+      $.getJSON("response_sample20.json", function(json) {
         var results_data = json;
       resultsLoop(results_data);
       });
     });
 
-  //When search is submitted, render "Tour de France" videos with the keyword ordered by date
+// When search is submitted, render "Tour de France" videos with the keyword ordered by date
   $("form").on("submit", function(e) {
     e.preventDefault();
     $(".welcome-msg").html("");
-    let base_keyword = "Tour+de+France+";
     let keyword = base_keyword + encodeURIComponent($("#search").val()).replace(/%20/g, "+");
     let request = gapi.client.youtube.search.list({
       part: "snippet",
       type: "video",
       q: keyword,
       maxResults: 10,
-      order: "date",// order: "viewCount",
+      order: "date",// "rating" "relevance" "title" "videoCount" "viewCount",
       publishedAfter: "2015-01-01T00:00:00Z"
     });
-
-    // execute the request
     request.execute(function(response) {
       var results = response.result;
         $("#results").html("");
@@ -35,11 +31,123 @@ $(function() {
         resetVideoHeight();
     });
   });
-  $(window).on("resize", resetVideoHeight);
+
+  $(window).on("resize", resetVideoHeight);//work later
+
+  $("#bydate").on("click", function(e) {
+    e.preventDefault();
+    $(".welcome-msg").html("");
+    sortByDate(copyKeyword());
+  });
+
+  $("#byviewcount").on("click", function(e) {
+    e.preventDefault();
+    $(".welcome-msg").html("");
+    sortByViewCount(copyKeyword());
+  });
+
+  $("#byrating").on("click", function(e) {
+    e.preventDefault();
+    $(".welcome-msg").html("");
+    sortByRating(copyKeyword());
+  });
+
+  $("#byrelevance").on("click", function(e) {
+    e.preventDefault();
+    $(".welcome-msg").html("");
+    sortByRelevance(copyKeyword());
+  });
+
 });
 
-function resetVideoHeight() {
-  $(".video").css("height", $("#results").width() * 9/16)
+
+function copyKeyword() {
+  let search_keyword = encodeURIComponent($("#search").val()).replace(/%20/g, "+");
+  return search_keyword;
+}
+
+function sortByDate(keyword) {
+    if (!keyword) {
+      keyword = "";
+    }
+    let api_keyword = base_keyword + keyword;
+    let request = gapi.client.youtube.search.list({
+      part: "snippet",
+      type: "video",
+      q: api_keyword,
+      maxResults: 10,
+      order: "date", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
+      publishedAfter: "2015-01-01T00:00:00Z"
+    });
+    request.execute(function(response) {
+      var results = response.result;
+        $("#results").html("");
+        resultsLoop(results);
+        resetVideoHeight();
+    });
+}
+
+function sortByViewCount(keyword) {
+    if (!keyword) {
+      keyword = "";
+    }
+    let api_keyword = base_keyword + keyword;
+    let request = gapi.client.youtube.search.list({
+      part: "snippet",
+      type: "video",
+      q: api_keyword,
+      maxResults: 10,
+      order: "viewCount", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
+      publishedAfter: "2015-01-01T00:00:00Z"
+    });
+    request.execute(function(response) {
+      var results = response.result;
+        $("#results").html("");
+        resultsLoop(results);
+        resetVideoHeight();
+    });
+}
+
+function sortByRating(keyword) {
+    if (!keyword) {
+      keyword = "";
+    }
+    let api_keyword = base_keyword + keyword;
+    let request = gapi.client.youtube.search.list({
+      part: "snippet",
+      type: "video",
+      q: api_keyword,
+      maxResults: 10,
+      order: "rating", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
+      publishedAfter: "2015-01-01T00:00:00Z"
+    });
+    request.execute(function(response) {
+      var results = response.result;
+        $("#results").html("");
+        resultsLoop(results);
+        resetVideoHeight();
+    });
+}
+
+function sortByRelevance(keyword) {
+    if (!keyword) {
+      keyword = "";
+    }
+    let api_keyword = base_keyword + keyword;
+    let request = gapi.client.youtube.search.list({
+      part: "snippet",
+      type: "video",
+      q: api_keyword,
+      maxResults: 10,
+      order: "relevance", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
+      publishedAfter: "2015-01-01T00:00:00Z"
+    });
+    request.execute(function(response) {
+      var results = response.result;
+        $("#results").html("");
+        resultsLoop(results);
+        resetVideoHeight();
+    });
 }
 
 function resultsLoop(data){
@@ -51,7 +159,6 @@ function resultsLoop(data){
     let desc = item.snippet.description.substring(0,45);
     let pdate = new Date(item.snippet.publishedAt);
     let date = (pdate.getMonth() + 1)+ "/" + pdate.getDate()  + "/" + pdate.getFullYear();
-
     let videoid = item.id.videoId;
     let time = new Date($.now());
 
@@ -78,4 +185,9 @@ function init() {
     gapi.client.load("youtube", "v3", function() {
       // YouTube api is ready
 });
+}
+
+// for mobile.
+function resetVideoHeight() {
+  $(".video").css("height", $("#results").width() * 9/16)
 }
