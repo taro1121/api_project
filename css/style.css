@@ -178,3 +178,10 @@ ul.dmenu li {
   color:#fff;
   opacity:1;
 }
+
+.btn {
+  padding: 0px;
+  background-color: white;
+  border-color: white;
+  border: 0px;
+}

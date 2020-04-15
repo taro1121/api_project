@@ -1,6 +1,9 @@
 const base_keyword = "Tour+de+France+";
+var $videoSrc;
 
-$(function() {
+$(document).ready(function() {
+  initLoad();
+
 // When logo is clicked, render dummy "Tour de France Videos(10)" creatded from the json object made by response_sample.json file.
   $("#NewLogo").on("click", function(e) {
     e.preventDefault();
@@ -29,6 +32,12 @@ $(function() {
         $("#results").html("");
         resultsLoop(results);
         resetVideoHeight();
+
+        // $('.video-btn').on('click', function(e) {
+        //   e.preventDefault();
+        //   $videoSrc = $(this).data("src");
+        // });
+
     });
   });
 
@@ -60,19 +69,19 @@ $(function() {
 
 
 // Gets the video src from the data-src on each button
-  var $videoSrc;
-  $('.video-btn').click(function() {
-    $videoSrc = $(this).data("data-src");
-  });
-  console.log("$videoSrc is: " + $videoSrc);
+  // let $videoSrc;
+  // $('.video-btn').on('click', function(e) {
+  //   e.preventDefault();
+  //   alert("here");
+  //   $videoSrc = $(this).data("src");// $videoSrc = "http://www.youtube.com/embed/ZacOS8NBK6U";
+  //   alert("TEST: " + $videoSrc);
+  // });
 
 // when the modal is opened autoplay it
   $('#myModal').on('shown.bs.modal', function (e) {
 
 // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
-    // $("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
-    $("#video").attr('src',$videoSrc );
-
+    $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
   })
 
 // stop playing the youtube video when I close the modal
@@ -185,32 +194,49 @@ function resultsLoop(data){
     let videoid = item.id.videoId;
     let time = new Date($.now());
 
-  $("#results").append(`
-    <li>
-      <button type="button" class="btn btn-primary video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/${videoid}" data-target="#myModal">
-        <img src="${thumb}" alt="">
-      </button>
-      <div class= "details">
-        <h4>${channel_title}</h4>
-        <h4>${title}</h4>
-        <p>${desc}</p>
-        <p>Published Date: ${date}</p>
-      </div>
-    </li>
+    $("#results").append(`
+      <li>
+        <button type="button" class="btn btn-primary video-btn" data-toggle="modal" data-src="http://www.youtube.com/embed/${videoid}" data-target="#myModal">
+          <img src="${thumb}" alt="thumbnail image" class="thumb-btn">
+        </button>
+        <div class= "details">
+          <h4>${channel_title}</h4>
+          <h4>${title}</h4>
+          <p>${desc}</p>
+          <p>Published Date: ${date}</p>
+        </div>
+      </li>
     `);
 
-  $("#footer-modify").html(`<p>Last Updated: ${time}`);
+    $("#footer-modify").html(`<p>Last Updated: ${time}`);
+
+    $('.video-btn').on('click', function() {
+      $videoSrc = $(this).data("src");
+    });
   });
 }
 
 function init() {
-    gapi.client.setApiKey("AIzaSyDAPShIt5LqMJq6FjwxUKiPADBzeN15ck8");
-    gapi.client.load("youtube", "v3", function() {
+  gapi.client.setApiKey("AIzaSyDAPShIt5LqMJq6FjwxUKiPADBzeN15ck8");
+  gapi.client.load("youtube", "v3", function() {
       // YouTube api is ready
-});
+  });
 }
 
 // for mobile.
 function resetVideoHeight() {
   $(".video").css("height", $("#results").width() * 9/16)
+}
+
+function initLoad() {
+  $(".welcome-msg").html("");
+  $.getJSON("response_sample20.json", function(json) {
+    var results_data = json;
+    resultsLoop(results_data);
+
+    // $('.video-btn').on('click', function() {
+    //   $videoSrc = $(this).data("src");
+    // });
+
+  });
 }
