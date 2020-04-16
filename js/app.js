@@ -5,14 +5,14 @@ $(document).ready(function() {
   initLoad();
 
 // When logo is clicked, render dummy "Tour de France Videos(10)" creatded from the json object made by response_sample.json file.
-  $("#NewLogo").on("click", function(e) {
-    e.preventDefault();
+  // $("#NewLogo").on("click", function(e) {
+  //   e.preventDefault();
     $(".welcome-msg").html("");
       $.getJSON("response_sample20.json", function(json) {
         var results_data = json;
       resultsLoop(results_data);
       });
-    });
+    // });
 
 // When search is submitted, render "Tour de France" videos with the keyword ordered by date
   $("form").on("submit", function(e) {
@@ -23,7 +23,7 @@ $(document).ready(function() {
       part: "snippet",
       type: "video",
       q: keyword,
-      maxResults: 10,
+      maxResults: 20,
       order: "date",// "rating" "relevance" "title" "videoCount" "viewCount",
       publishedAfter: "2015-01-01T00:00:00Z"
     });
@@ -32,12 +32,6 @@ $(document).ready(function() {
         $("#results").html("");
         resultsLoop(results);
         resetVideoHeight();
-
-        // $('.video-btn').on('click', function(e) {
-        //   e.preventDefault();
-        //   $videoSrc = $(this).data("src");
-        // });
-
     });
   });
 
@@ -67,37 +61,25 @@ $(document).ready(function() {
     sortByRelevance(copyKeyword());
   });
 
-
-// Gets the video src from the data-src on each button
-  // let $videoSrc;
-  // $('.video-btn').on('click', function(e) {
-  //   e.preventDefault();
-  //   alert("here");
-  //   $videoSrc = $(this).data("src");// $videoSrc = "http://www.youtube.com/embed/ZacOS8NBK6U";
-  //   alert("TEST: " + $videoSrc);
-  // });
-
-// when the modal is opened autoplay it
+  // when the modal is opened autoplay it
   $('#myModal').on('shown.bs.modal', function (e) {
-
-// set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
+    // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
     $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
   })
 
-// stop playing the youtube video when I close the modal
+  // stop playing the youtube video when I close the modal
   $('#myModal').on('hide.bs.modal', function (e) {
-    // a poor man's stop video
-    $("#video").attr('src',$videoSrc);
+    $("#video").attr('src',$videoSrc);// remove "?autoplay" parameter from link.
   })
-
 });
 
-
+// copy keyword in the search box.
 function copyKeyword() {
   let search_keyword = encodeURIComponent($("#search").val()).replace(/%20/g, "+");
   return search_keyword;
 }
 
+// send search by base_keyword + keyword and get result in specified sort order.
 function sortByDate(keyword) {
     if (!keyword) {
       keyword = "";
@@ -107,7 +89,7 @@ function sortByDate(keyword) {
       part: "snippet",
       type: "video",
       q: api_keyword,
-      maxResults: 10,
+      maxResults: 20,
       order: "date", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
       publishedAfter: "2015-01-01T00:00:00Z"
     });
@@ -128,7 +110,7 @@ function sortByViewCount(keyword) {
       part: "snippet",
       type: "video",
       q: api_keyword,
-      maxResults: 10,
+      maxResults: 20,
       order: "viewCount", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
       publishedAfter: "2015-01-01T00:00:00Z"
     });
@@ -149,7 +131,7 @@ function sortByRating(keyword) {
       part: "snippet",
       type: "video",
       q: api_keyword,
-      maxResults: 10,
+      maxResults: 20,
       order: "rating", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
       publishedAfter: "2015-01-01T00:00:00Z"
     });
@@ -170,7 +152,7 @@ function sortByRelevance(keyword) {
       part: "snippet",
       type: "video",
       q: api_keyword,
-      maxResults: 10,
+      maxResults: 20,
       order: "relevance", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
       publishedAfter: "2015-01-01T00:00:00Z"
     });
@@ -210,6 +192,7 @@ function resultsLoop(data){
 
     $("#footer-modify").html(`<p>Last Updated: ${time}`);
 
+// Get video link every time #result is rendered.
     $('.video-btn').on('click', function() {
       $videoSrc = $(this).data("src");
     });
@@ -219,7 +202,6 @@ function resultsLoop(data){
 function init() {
   gapi.client.setApiKey("AIzaSyDAPShIt5LqMJq6FjwxUKiPADBzeN15ck8");
   gapi.client.load("youtube", "v3", function() {
-      // YouTube api is ready
   });
 }
 
@@ -233,10 +215,5 @@ function initLoad() {
   $.getJSON("response_sample20.json", function(json) {
     var results_data = json;
     resultsLoop(results_data);
-
-    // $('.video-btn').on('click', function() {
-    //   $videoSrc = $(this).data("src");
-    // });
-
   });
 }
