@@ -8,7 +8,7 @@ $(document).ready(function() {
   // $("#NewLogo").on("click", function(e) {
   //   e.preventDefault();
     $(".welcome-msg").html("");
-      $.getJSON("response_sample20.json", function(json) {
+      $.getJSON("src/response_sample.json", function(json) {
         var results_data = json;
       resultsLoop(results_data);
       });
@@ -179,11 +179,11 @@ function resultsLoop(data){
     $("#results").append(`
       <li>
         <button type="button" class="btn btn-primary video-btn" data-toggle="modal" data-src="http://www.youtube.com/embed/${videoid}" data-target="#myModal">
-          <img src="${thumb}" alt="thumbnail image" class="thumb-btn">
+          <img src="${thumb}" alt="thumbnail image">
         </button>
         <div class= "details">
-          <h4>${channel_title}</h4>
-          <h4>${title}</h4>
+          <p>${channel_title}</p>
+          <p>${title}</p>
           <p>${desc}</p>
           <p>Published Date: ${date}</p>
         </div>
@@ -212,7 +212,7 @@ function resetVideoHeight() {
 
 function initLoad() {
   $(".welcome-msg").html("");
-  $.getJSON("response_sample20.json", function(json) {
+  $.getJSON("src/response_sample20.json", function(json) {
     var results_data = json;
     resultsLoop(results_data);
   });
