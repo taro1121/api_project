@@ -10,9 +10,6 @@ a {
 a:hover {
   color: black;
 }
-/* div {
-  display: block;
-} */
 p, ul, li {
   margin: 0;
   padding: 0;
@@ -32,18 +29,14 @@ p, ul, li {
   padding-inline-start: 40px;
 } */
 #wrapper {
-  /* background-color: yellow; */
   width: 1020px;
-  /* width: auto; */
   /* width: 970px; */
   margin: 0 auto;
 }
 #header {
   background-color: #ffff00;
-  /* width: auto; */
   width: 1020px;
   height: 60px;
-
   /* position: fixed; */
 }
 #header-wrap {
@@ -81,18 +74,15 @@ p, ul, li {
 #main {
   width: 1020px;
   overflow: hidden;
-  /* width: auto: */
 }
 #contents {
   float: left;
   width: 1020px;
-  /* width: auto; */
 }
 .dmenu {
   /* position: fixed; */
 }
 ul.dmenu {
-  /* background-color: #33D1DD; */
   list-style-type: none;
   margin: 7px 0;
   padding: 0;
@@ -104,7 +94,6 @@ ul.dmenu li {
     position: relative;
     padding-left: 5px;
     width: 150px;
-    /* background-color: #FFFFFF; */
     font-weight: bold;
     font-size: 14px;
 }
@@ -114,7 +103,6 @@ ul.dmenu li {
 #results li {
   /* display: flex; */
   float: left;
-  /* width: 465px; */
   /* width: 350px;
   height: 250px;
   margin: 0px 5px 10px 5px; */
@@ -127,7 +115,6 @@ ul.dmenu li {
 }
 #footer {
   background-color: #ffff00;
-  /* margin-top: 10px; */
   padding-top: 10px;
   text-align: center;
   clear: both;
@@ -161,7 +148,11 @@ ul.dmenu li {
   border-color: white;
   border: 0px;
 }
-
+#error-msg {
+  height: 200px;
+  padding-top: 50px;
+  text-align: center;
+}
 
 
 
@@ -184,4 +175,7 @@ ul.dmenu li {
   padding: 10px 10px 5px;
   background: #eee;
   text-align: center;
+}
+div {
+  display: block;
 } */
