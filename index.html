@@ -1,26 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Shintaro's Bicycle YouTube API Project</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="Bicycle YouTube videos">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/css/master.css">
-		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+		<title>Tour de France YouTube Collection</title>
+		<meta name="description" content="List of Tour de France related YouTube videos.">
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<link href="css/style.css" rel="stylesheet" type="text/css"></style>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 
 	<body>
-		<header>
-			<h1 class="w100 text-center"><a href="index.html">YouTube Search</a></h1>
-		</header>
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<form action="#">
-					<p><input type="text" id="search" placeholder="Search Keyword" autocomplete="off" class="form-control" /></p>
-					<p><input type="submit" value="Search" class="form-control btn btn-primary w100"></p>
-				</form>
-				<div id="results"></div>
+		<div id="wrapper">
+			<div id="header">
+					<ul id="header-wrap">
+						<li id="header-logo">
+							<a><img id="NewLogo" src="NewLogo.png"></a>
+						</li>
+						<li id="header-search">
+							<form action="/" method="POST" class="search_container">
+								<input type="text" id="search" name="keyword" value class="search-box" placeholder="Keyword Search" maxlength="20" style="width: 200px; height: 40px">
+								<input type="submit" value="Search">
+							</form>
+						</li>
+					</ul>
+			</div>
+			<div id="main">
+				<div id="contents">
+					<ul class="dmenu">
+						<li>Sort by</li>
+						<li><div id="bydate"><a href="/">Date</a></div></li>
+						<li><div id="byviewcount"><a href="/">Views Count</a></div></li>
+						<li><div id="byrating"><a href="/">Rating</a></div></li>
+						<li><div id="byrelevance"><a href="/">Relevance</a></div></li>
+					</ul>
+
+					<br>
+					<div class="welcome-msg">
+						<p>Welcome, please click <font color="0000ff">Tour de France YouTube Collection</font> logo in the header.  10 YouTube videos related to "Tour de France" and published after 1/1/2015 will be listed by published date.  You can sort the list by published date, view count, rating, and relevance.  Please use search box if you know what you are looking for.  Thanks.</p>
+					</div>
+					<div id="results"></div>
+
+					<ul class="movie_field">
+
+
+						<!-- <li>
+							<div class="movie-img">
+								<a href="./detail.php?vid=NUXoTFXDHyU">
+									<img data-src="https://i.ytimg.com/vi/NUXoTFXDHyU/mqdefault.jpg" class=" lazyloaded" src="https://i.ytimg.com/vi/NUXoTFXDHyU/mqdefault.jpg">
+								</a>
+								<p class="movie-duration">07:27</p>
+							</div>
+							<p class="movie_channel">NIGHTWISH</p>
+							<p class="movie_title">NIGHTWISH – Floor Jansen answers your questions</p>
+							<div class="movie_data">
+								<p>2020/04/03</p><p>6.6万回</p>
+							</div>
+						</li> -->
+					</ul>
+
+
+
+					<!-- <div id="page-field">
+						<ul class="page-navi">
+							<li>Total</li>
+							<br>
+							<li>Previous</li>
+							<li>Next</li>
+						</ul>
+					</div> -->
+				</div>
+			</div>
+			<div id="footer">
+				<span>Tour de France YouTube Collection is made by <a href="https://developers.google.com/youtube/v3" target="_blank">YouTube Data API</a> &copy;2020</span>
+				<span id="footer-modify"></span>
 			</div>
 		</div>
 

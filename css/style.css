@@ -1,0 +1,158 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+a {
+  color: black;
+  /* text-decoration: none; */
+}
+div {
+  display: block;
+}
+p, ul, li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+ul {
+  diplay: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+#wrapper {
+  /* background-color: yellow; */
+  width: 950px;
+  margin: 0 auto;
+}
+#header {
+  background-color: #34CEBA;
+  width: 950px;
+  height: 60px;
+  /* position: fixed; */
+}
+#header-wrap {
+  margin: 0;
+  list-style: none;
+  display: flex;
+  width: 100%;
+}
+#header-logo {
+  padding: 13px 0 0 10px;
+  width: 280px;
+}
+#header-search {
+  padding-top: 10px;
+  width: 300px;
+}
+.search_container input[type="text"] {
+  padding-bottom: 1px;
+  background: #FFFFFF;
+  border: none;
+  height: 30px;
+  border: 1px solid #888888;
+}
+.search_container input[type="submit"] {
+    cursor: pointer;
+    font-family: FontAwesome;
+    border: none;
+    background: #DDDDDD;
+    color: #555555;
+    outline: none;
+    width: 3.0em;
+    height: 31px;
+}
+
+
+#main {
+  /* background-color: green; */
+  width: 950px;
+  overflow: hidden;
+}
+#contents {
+  /* background-color: orange; */
+  float: left;
+  width: 950px;
+}
+.dmenu {
+  /* position: fixed; */
+}
+ul.dmenu {
+  /* background-color: #33D1DD; */
+  list-style-type: none;
+  margin: 10px 0 0 0;
+  padding: 0;
+  padding-left: 5px;
+  display: flex;
+}
+ul.dmenu li {
+    /* z-index: 1000; */
+    position: relative;
+    /* padding: 5px; */
+    width: 150px;
+    /* background-color: #FFFFFF; */
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
+.welcome-msg {
+  text-align: center;0010fd
+}
+#results {
+  list-style-type: none;
+}
+
+#results li {
+  /* display: flex; */
+  float: left;
+  /* width: 465px; */
+  width: 350px;
+  height: 250px;
+  margin: 0px 5px 10px 5px;
+}
+
+
+.movie_field {
+  background-color: #FFFFFF;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-top: 10px;
+}
+
+
+#page-field {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+.page-navi {
+  margin: 15px 0 0 0;
+  padding: 10px 10px 5px;
+  background: #eee;
+  text-align: center;
+}
+
+
+#footer {
+  background-color: #34CEBA;
+  /* margin-top: 10px; */
+  padding-top: 10px;
+  text-align: center;
+  clear: both;
+  width: 950px;
+  height: 50px;
+}
+
+#footer-modify {
+  font-size: 80%;
+}
