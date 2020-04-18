@@ -15,33 +15,41 @@
 		<div id="wrapper">
 			<div id="header">
 					<ul id="header-wrap">
-						<li id="header-logo">
-							<span>Tour de France YouTube Collection</span>
-							<!-- <a><img id="NewLogo" src="NewLogoB.png"></a> -->
-						</li>
-						<li id="header-search">
-							<form action="/" method="POST" class="search_container">
-								<input type="text" id="search" name="keyword" value class="search-box" placeholder="Keyword Search" maxlength="20" style="width: 200px; height: 40px">
-								<input type="submit" value="Search">
-							</form>
-						</li>
+						<div class="row">
+
+							<div class="col-md-6">
+								<li id="header-logo">
+									<span>Tour de France YouTube Collection</span>
+									<!-- <a><img id="NewLogo" src="NewLogoB.png"></a> -->
+								</li>
+							</div>
+
+							<div class="col-md-6">
+								<li id="header-search">
+									<form action="/" method="POST" class="search_container">
+										<input type="text" id="search" name="keyword" value class="search-box" placeholder="Keyword Search" maxlength="20" style="width: 200px; height: 40px">
+										<input type="submit" value="Search">
+									</form>
+								</li>
+							</div>
+
+						</div>
+
 					</ul>
 			</div>
+
 			<div id="main">
 				<div id="contents">
 					<ul class="dmenu">
 						<li>Sort by</li>
-						<li><div id="bydate"><a href="/">Date</a></div></li>
-						<li><div id="byviewcount"><a href="/">Views Count</a></div></li>
-						<li><div id="byrating"><a href="/">Rating</a></div></li>
-						<li><div id="byrelevance"><a href="/">Relevance</a></div></li>
+						<li><div id="bydate" class="sort" value="date"><a href="/">Date</a></div></li>
+						<li><div id="byviewcount" class="sort" value="viewCount"><a href="/">Views Count</a></div></li>
+						<li><div id="byrating" class="sort"><a href="/">Rating</a></div></li>
+						<li><div id="byrelevance" class="sort"><a href="/">Relevance</a></div></li>
 					</ul>
 
 					<br>
-					<div class="welcome-msg">
-						<!-- <p>Welcome, please click <font color="0000ff">Tour de France YouTube Collection</font> logo in the header.  10 YouTube videos related to "Tour de France" and published after 1/1/2015 will be listed by published date.  You can sort the list by published date, view count, rating, and relevance.  Please use search box if you know what you are looking for.  Thanks.</p> -->
-					</div>
-					<div id="results"></div>
+					<div class=row id="results"></div>
 
 					<!-- <div id="page-field">
 						<ul class="page-navi">

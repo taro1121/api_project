@@ -1,169 +1,81 @@
-const base_keyword = "Tour+de+France+";
-var $videoSrc;
+const base_keyword = "Cycling+Tour+de+France+";
+let $videoSrc;
 
 $(document).ready(function() {
-  initLoad();
+  initDummyLoad();
 
-// When logo is clicked, render dummy "Tour de France Videos(10)" creatded from the json object made by response_sample.json file.
-  // $("#NewLogo").on("click", function(e) {
-  //   e.preventDefault();
-    $(".welcome-msg").html("");
-      $.getJSON("src/response_sample.json", function(json) {
-        var results_data = json;
-      resultsLoop(results_data);
-      });
-    // });
-
-// When search is submitted, render "Tour de France" videos with the keyword ordered by date
+// When search is submitted, render "Tour de France" videos with the keyword ordered by date.
   $("form").on("submit", function(e) {
     e.preventDefault();
-    $(".welcome-msg").html("");
-    let keyword = base_keyword + encodeURIComponent($("#search").val()).replace(/%20/g, "+");
-    let request = gapi.client.youtube.search.list({
-      part: "snippet",
-      type: "video",
-      q: keyword,
-      maxResults: 20,
-      order: "date",// "rating" "relevance" "title" "videoCount" "viewCount",
-      publishedAfter: "2015-01-01T00:00:00Z"
-    });
-    request.execute(function(response) {
-      var results = response.result;
-        $("#results").html("");
-        resultsLoop(results);
-        resetVideoHeight();
-    });
+    search();
   });
 
-  $(window).on("resize", resetVideoHeight);//work later
-
-  $("#bydate").on("click", function(e) {
+// When sort menu is clicked, get sort criteria and search word then create api request.
+  $(".sort").on("click", function(e) {
     e.preventDefault();
-    $(".welcome-msg").html("");
-    sortByDate(copyKeyword());
+    let $sortValue = $(this).attr("value");
+    sortBy(copyKeyword(), $sortValue);
   });
 
-  $("#byviewcount").on("click", function(e) {
-    e.preventDefault();
-    $(".welcome-msg").html("");
-    sortByViewCount(copyKeyword());
-  });
-
-  $("#byrating").on("click", function(e) {
-    e.preventDefault();
-    $(".welcome-msg").html("");
-    sortByRating(copyKeyword());
-  });
-
-  $("#byrelevance").on("click", function(e) {
-    e.preventDefault();
-    $(".welcome-msg").html("");
-    sortByRelevance(copyKeyword());
-  });
-
-  // when the modal is opened autoplay it
+// when the modal is opened autoplay it
   $('#myModal').on('shown.bs.modal', function (e) {
-    // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
+// set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
     $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
   })
-
-  // stop playing the youtube video when I close the modal
+// stop playing the youtube video when I close the modal
   $('#myModal').on('hide.bs.modal', function (e) {
-    $("#video").attr('src',$videoSrc);// remove "?autoplay" parameter from link.
+    $("#video").attr('src',$videoSrc);// removing "?autoplay" parameter from link.
   })
+
+  $(window).on("resize", resetVideoHeight);//work later
 });
 
-// copy keyword in the search box.
+// base search fn.  search by base + custom keyword and sort by date (up to 21).
+function search() {
+  let keyword = base_keyword + encodeURIComponent($("#search").val()).replace(/%20/g, "+");
+  let request = gapi.client.youtube.search.list({
+    part: "snippet",
+    type: "video",
+    q: keyword,
+    maxResults: 21,
+    order: "date",// "rating" "relevance" "title" "videoCount" "viewCount",
+    publishedAfter: "2015-01-01T00:00:00Z"
+  });
+  request.execute(function(response) {
+    var results = response.result;
+      resultsLoop(results);
+      resetVideoHeight();
+  });
+}
+
+// fn to copy keyword in the search box.
 function copyKeyword() {
   let search_keyword = encodeURIComponent($("#search").val()).replace(/%20/g, "+");
   return search_keyword;
 }
-
-// send search by base_keyword + keyword and get result in specified sort order.
-function sortByDate(keyword) {
-    if (!keyword) {
-      keyword = "";
-    }
-    let api_keyword = base_keyword + keyword;
-    let request = gapi.client.youtube.search.list({
-      part: "snippet",
-      type: "video",
-      q: api_keyword,
-      maxResults: 20,
-      order: "date", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
-      publishedAfter: "2015-01-01T00:00:00Z"
-    });
-    request.execute(function(response) {
-      var results = response.result;
-        $("#results").html("");
-        resultsLoop(results);
-        resetVideoHeight();
-    });
+// fn to sort by the menu label and custom keyword.
+function sortBy(keyword, sortValue) {
+  if (!keyword) {
+    keyword = "";
+  }
+  let api_keyword = base_keyword + keyword;
+  let request = gapi.client.youtube.search.list({
+    part: "snippet",
+    type: "video",
+    q: api_keyword,
+    maxResults: 21,
+    order: sortValue,
+    publishedAfter: "2015-01-01T00:00:00Z"
+  });
+  request.execute(function(response) {
+    var results = response.result;
+      $("#results").html("");
+      resultsLoop(results);
+      resetVideoHeight();
+  });
 }
 
-function sortByViewCount(keyword) {
-    if (!keyword) {
-      keyword = "";
-    }
-    let api_keyword = base_keyword + keyword;
-    let request = gapi.client.youtube.search.list({
-      part: "snippet",
-      type: "video",
-      q: api_keyword,
-      maxResults: 20,
-      order: "viewCount", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
-      publishedAfter: "2015-01-01T00:00:00Z"
-    });
-    request.execute(function(response) {
-      var results = response.result;
-        $("#results").html("");
-        resultsLoop(results);
-        resetVideoHeight();
-    });
-}
-
-function sortByRating(keyword) {
-    if (!keyword) {
-      keyword = "";
-    }
-    let api_keyword = base_keyword + keyword;
-    let request = gapi.client.youtube.search.list({
-      part: "snippet",
-      type: "video",
-      q: api_keyword,
-      maxResults: 20,
-      order: "rating", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
-      publishedAfter: "2015-01-01T00:00:00Z"
-    });
-    request.execute(function(response) {
-      var results = response.result;
-        $("#results").html("");
-        resultsLoop(results);
-        resetVideoHeight();
-    });
-}
-
-function sortByRelevance(keyword) {
-    if (!keyword) {
-      keyword = "";
-    }
-    let api_keyword = base_keyword + keyword;
-    let request = gapi.client.youtube.search.list({
-      part: "snippet",
-      type: "video",
-      q: api_keyword,
-      maxResults: 20,
-      order: "relevance", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
-      publishedAfter: "2015-01-01T00:00:00Z"
-    });
-    request.execute(function(response) {
-      var results = response.result;
-        $("#results").html("");
-        resultsLoop(results);
-        resetVideoHeight();
-    });
-}
-
+// fn to render results in <li>
 function resultsLoop(data){
   $("#results").html("");
   $.each(data.items, function(i, item) {
@@ -177,6 +89,7 @@ function resultsLoop(data){
     let time = new Date($.now());
 
     $("#results").append(`
+    <div class="col-md-4">
       <li>
         <button type="button" class="btn btn-primary video-btn" data-toggle="modal" data-src="http://www.youtube.com/embed/${videoid}" data-target="#myModal">
           <img src="${thumb}" alt="thumbnail image">
@@ -188,6 +101,7 @@ function resultsLoop(data){
           <p>Published Date: ${date}</p>
         </div>
       </li>
+    </div>
     `);
 
     $("#footer-modify").html(`<p>Last Updated: ${time}`);
@@ -202,18 +116,18 @@ function resultsLoop(data){
 function init() {
   gapi.client.setApiKey("AIzaSyDAPShIt5LqMJq6FjwxUKiPADBzeN15ck8");
   gapi.client.load("youtube", "v3", function() {
+    // search();
+  });
+}
+
+function initDummyLoad() {
+  $.getJSON("src/response_sample.json", function(json) {
+    var results_data = json;
+    resultsLoop(results_data);
   });
 }
 
 // for mobile.
 function resetVideoHeight() {
   $(".video").css("height", $("#results").width() * 9/16)
-}
-
-function initLoad() {
-  $(".welcome-msg").html("");
-  $.getJSON("src/response_sample20.json", function(json) {
-    var results_data = json;
-    resultsLoop(results_data);
-  });
 }
