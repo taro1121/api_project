@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<title>Tour de France YouTube Collection</title>
 		<meta name="description" content="List of Tour de France related YouTube videos.">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 		<link href="css/style.css" rel="stylesheet" type="text/css"></style>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,43 +15,34 @@
 	<body>
 		<div id="wrapper">
 			<div id="header">
-					<ul id="header-wrap">
-						<li id="header-logo">
-							<span>Tour de France YouTube Collection</span>
-							<!-- <a><img id="NewLogo" src="NewLogoB.png"></a> -->
-						</li>
-						<li id="header-search">
-							<form action="/" method="POST" class="search_container">
-								<input type="text" id="search" name="keyword" value class="search-box" placeholder="Keyword Search" maxlength="20" style="width: 200px; height: 40px">
-								<input type="submit" value="Search">
-							</form>
-						</li>
+					<ul id="header-wrap" class="font-weight-bold">
+						<div class="row">
+							<div class="col-md-6">
+								<li id="header-logo">
+									<h5>Tour de France YouTube Collection</h5>
+								</li>
+							</div>
+							<div class="col-md-6">
+								<li id="header-search">
+									<form action="/" method="POST" class="search_container">
+										<input type="text" id="search" name="keyword" value class="search-box" placeholder="Keyword Search" maxlength="20" style="width: 200px; height: 40px">
+										<input type="submit" value="Search">
+									</form>
+								</li>
+							</div>
+						</div>
 					</ul>
 			</div>
 			<div id="main">
 				<div id="contents">
 					<ul class="dmenu">
 						<li>Sort by</li>
-						<li><div id="bydate"><a href="/">Date</a></div></li>
-						<li><div id="byviewcount"><a href="/">Views Count</a></div></li>
-						<li><div id="byrating"><a href="/">Rating</a></div></li>
-						<li><div id="byrelevance"><a href="/">Relevance</a></div></li>
+						<li><div id="bydate" class="sort" value="date"><a href="/">Date</a></div></li>
+						<li><div id="byviewcount" class="sort" value="viewCount"><a href="/">Views Count</a></div></li>
+						<li><div id="byrating" class="sort"><a href="/">Rating</a></div></li>
+						<li><div id="byrelevance" class="sort"><a href="/">Relevance</a></div></li>
 					</ul>
-
-					<br>
-					<div class="welcome-msg">
-						<!-- <p>Welcome, please click <font color="0000ff">Tour de France YouTube Collection</font> logo in the header.  10 YouTube videos related to "Tour de France" and published after 1/1/2015 will be listed by published date.  You can sort the list by published date, view count, rating, and relevance.  Please use search box if you know what you are looking for.  Thanks.</p> -->
-					</div>
-					<div id="results"></div>
-
-					<!-- <div id="page-field">
-						<ul class="page-navi">
-							<li>Total</li>
-							<br>
-							<li>Previous</li>
-							<li>Next</li>
-						</ul>
-					</div> -->
+					<div class=row id="results"><div class="h5 col-md-12 text-danger" id="error-msg">Sorry unable to reach Google API.  Please check the credential an refresh the page.</div></div>
 				</div>
 			</div>
 			<div id="footer">
@@ -80,11 +72,8 @@
 		<script src="js/jquery-3.3.1.min.js"></script>
 		<script src="js/app.js"></script>
 		<script src="https://apis.google.com/js/client.js?onload=init"></script>
-
 		<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
-
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	</body>
 </html>
