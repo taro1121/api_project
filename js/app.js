@@ -1,15 +1,18 @@
 const base_keyword = "Tour+de+France+";
+var $videoSrc;
 
-$(function() {
+$(document).ready(function() {
+  initLoad();
+
 // When logo is clicked, render dummy "Tour de France Videos(10)" creatded from the json object made by response_sample.json file.
-  $("#NewLogo").on("click", function(e) {
-    e.preventDefault();
+  // $("#NewLogo").on("click", function(e) {
+  //   e.preventDefault();
     $(".welcome-msg").html("");
-      $.getJSON("response_sample20.json", function(json) {
+      $.getJSON("src/response_sample.json", function(json) {
         var results_data = json;
       resultsLoop(results_data);
       });
-    });
+    // });
 
 // When search is submitted, render "Tour de France" videos with the keyword ordered by date
   $("form").on("submit", function(e) {
@@ -20,7 +23,7 @@ $(function() {
       part: "snippet",
       type: "video",
       q: keyword,
-      maxResults: 10,
+      maxResults: 20,
       order: "date",// "rating" "relevance" "title" "videoCount" "viewCount",
       publishedAfter: "2015-01-01T00:00:00Z"
     });
@@ -58,14 +61,25 @@ $(function() {
     sortByRelevance(copyKeyword());
   });
 
+  // when the modal is opened autoplay it
+  $('#myModal').on('shown.bs.modal', function (e) {
+    // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
+    $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
+  })
+
+  // stop playing the youtube video when I close the modal
+  $('#myModal').on('hide.bs.modal', function (e) {
+    $("#video").attr('src',$videoSrc);// remove "?autoplay" parameter from link.
+  })
 });
 
-
+// copy keyword in the search box.
 function copyKeyword() {
   let search_keyword = encodeURIComponent($("#search").val()).replace(/%20/g, "+");
   return search_keyword;
 }
 
+// send search by base_keyword + keyword and get result in specified sort order.
 function sortByDate(keyword) {
     if (!keyword) {
       keyword = "";
@@ -75,7 +89,7 @@ function sortByDate(keyword) {
       part: "snippet",
       type: "video",
       q: api_keyword,
-      maxResults: 10,
+      maxResults: 20,
       order: "date", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
       publishedAfter: "2015-01-01T00:00:00Z"
     });
@@ -96,7 +110,7 @@ function sortByViewCount(keyword) {
       part: "snippet",
       type: "video",
       q: api_keyword,
-      maxResults: 10,
+      maxResults: 20,
       order: "viewCount", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
       publishedAfter: "2015-01-01T00:00:00Z"
     });
@@ -117,7 +131,7 @@ function sortByRating(keyword) {
       part: "snippet",
       type: "video",
       q: api_keyword,
-      maxResults: 10,
+      maxResults: 20,
       order: "rating", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
       publishedAfter: "2015-01-01T00:00:00Z"
     });
@@ -138,7 +152,7 @@ function sortByRelevance(keyword) {
       part: "snippet",
       type: "video",
       q: api_keyword,
-      maxResults: 10,
+      maxResults: 20,
       order: "relevance", //"date", "rating", "relevance", "title", "videoCount", "viewCount",
       publishedAfter: "2015-01-01T00:00:00Z"
     });
@@ -162,32 +176,44 @@ function resultsLoop(data){
     let videoid = item.id.videoId;
     let time = new Date($.now());
 
-  $("#results").append(`
-    <li>
-      <a target="_blank" href="https://www.youtube.com/watch?v=${videoid}">
-      <img src="${thumb}" alt="" class="thumb">
-      </a>
-      <div class= "details">
-        <h4>${channel_title}</h4>
-        <h4>${title}</h4>
-        <p>${desc}</p>
-        <p>Published Date: ${date}</p>
-      </div>
-    </li>
+    $("#results").append(`
+      <li>
+        <button type="button" class="btn btn-primary video-btn" data-toggle="modal" data-src="http://www.youtube.com/embed/${videoid}" data-target="#myModal">
+          <img src="${thumb}" alt="thumbnail image">
+        </button>
+        <div class= "details">
+          <p>${channel_title}</p>
+          <p>${title}</p>
+          <p>${desc}</p>
+          <p>Published Date: ${date}</p>
+        </div>
+      </li>
     `);
 
-  $("#footer-modify").html(`<p>Last Updated: ${time}`);
+    $("#footer-modify").html(`<p>Last Updated: ${time}`);
+
+// Get video link every time #result is rendered.
+    $('.video-btn').on('click', function() {
+      $videoSrc = $(this).data("src");
+    });
   });
 }
 
 function init() {
-    gapi.client.setApiKey("AIzaSyDAPShIt5LqMJq6FjwxUKiPADBzeN15ck8");
-    gapi.client.load("youtube", "v3", function() {
-      // YouTube api is ready
-});
+  gapi.client.setApiKey("AIzaSyDAPShIt5LqMJq6FjwxUKiPADBzeN15ck8");
+  gapi.client.load("youtube", "v3", function() {
+  });
 }
 
 // for mobile.
 function resetVideoHeight() {
   $(".video").css("height", $("#results").width() * 9/16)
+}
+
+function initLoad() {
+  $(".welcome-msg").html("");
+  $.getJSON("src/response_sample20.json", function(json) {
+    var results_data = json;
+    resultsLoop(results_data);
+  });
 }

@@ -307,39 +307,6 @@
   },
   {
    "kind": "youtube#searchResult",
-   "etag": "\"tnVOtk4NeGU6nDncDTE5m9SmuHc/k0aOxRScF6QTgkUBRsSRGxJ5bqU\"",
-   "id": {
-    "kind": "youtube#video",
-    "videoId": "g94S2qX4gL0"
-   },
-   "snippet": {
-    "publishedAt": "2018-07-28T22:14:12.000Z",
-    "channelId": "UCUuWeXewWoqE84LOrDenm1Q",
-    "title": "Tour de France 2018 Stage 14 last 150 KM",
-    "description": "Tour de France 2018 Stage 14 Please subscribe , like and share my video.",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/g94S2qX4gL0/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/g94S2qX4gL0/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/g94S2qX4gL0/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
-    },
-    "channelTitle": "Cycling Race",
-    "liveBroadcastContent": "none"
-   }
-  },
-  {
-   "kind": "youtube#searchResult",
    "etag": "\"tnVOtk4NeGU6nDncDTE5m9SmuHc/Y5CZcE6-01tuQx0SUjYbTynonq0\"",
    "id": {
     "kind": "youtube#video",
@@ -434,39 +401,6 @@
      }
     },
     "channelTitle": "Влад Митин",
-    "liveBroadcastContent": "none"
-   }
-  },
-  {
-   "kind": "youtube#searchResult",
-   "etag": "\"tnVOtk4NeGU6nDncDTE5m9SmuHc/vR5H388yVI4YbTKNh88o5iA3_80\"",
-   "id": {
-    "kind": "youtube#video",
-    "videoId": "RKC5hg06i8s"
-   },
-   "snippet": {
-    "publishedAt": "2018-07-29T20:48:14.000Z",
-    "channelId": "UCUuWeXewWoqE84LOrDenm1Q",
-    "title": "Tour de France 2018 Stage 21 Full",
-    "description": "Tour de France 2018 Stage 21 Please subscribe , like and share my video.",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/RKC5hg06i8s/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/RKC5hg06i8s/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/RKC5hg06i8s/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
-    },
-    "channelTitle": "Cycling Race",
     "liveBroadcastContent": "none"
    }
   },

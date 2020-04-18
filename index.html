@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<meta charset="utf-8">
 		<title>Tour de France YouTube Collection</title>
 		<meta name="description" content="List of Tour de France related YouTube videos.">
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 		<link href="css/style.css" rel="stylesheet" type="text/css"></style>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="icon" href="src/favicon.png">
 	</head>
 
 	<body>
@@ -14,7 +16,8 @@
 			<div id="header">
 					<ul id="header-wrap">
 						<li id="header-logo">
-							<a><img id="NewLogo" src="NewLogo.png"></a>
+							<span>Tour de France YouTube Collection</span>
+							<!-- <a><img id="NewLogo" src="NewLogoB.png"></a> -->
 						</li>
 						<li id="header-search">
 							<form action="/" method="POST" class="search_container">
@@ -36,29 +39,9 @@
 
 					<br>
 					<div class="welcome-msg">
-						<p>Welcome, please click <font color="0000ff">Tour de France YouTube Collection</font> logo in the header.  10 YouTube videos related to "Tour de France" and published after 1/1/2015 will be listed by published date.  You can sort the list by published date, view count, rating, and relevance.  Please use search box if you know what you are looking for.  Thanks.</p>
+						<!-- <p>Welcome, please click <font color="0000ff">Tour de France YouTube Collection</font> logo in the header.  10 YouTube videos related to "Tour de France" and published after 1/1/2015 will be listed by published date.  You can sort the list by published date, view count, rating, and relevance.  Please use search box if you know what you are looking for.  Thanks.</p> -->
 					</div>
 					<div id="results"></div>
-
-					<ul class="movie_field">
-
-
-						<!-- <li>
-							<div class="movie-img">
-								<a href="./detail.php?vid=NUXoTFXDHyU">
-									<img data-src="https://i.ytimg.com/vi/NUXoTFXDHyU/mqdefault.jpg" class=" lazyloaded" src="https://i.ytimg.com/vi/NUXoTFXDHyU/mqdefault.jpg">
-								</a>
-								<p class="movie-duration">07:27</p>
-							</div>
-							<p class="movie_channel">NIGHTWISH</p>
-							<p class="movie_title">NIGHTWISH – Floor Jansen answers your questions</p>
-							<div class="movie_data">
-								<p>2020/04/03</p><p>6.6万回</p>
-							</div>
-						</li> -->
-					</ul>
-
-
 
 					<!-- <div id="page-field">
 						<ul class="page-navi">
@@ -76,9 +59,32 @@
 			</div>
 		</div>
 
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<!-- 16:9 aspect ratio -->
+						<div class="embed-responsive embed-responsive-16by9">
+		  				<iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
 		<script src="js/jquery-3.3.1.min.js"></script>
 		<script src="js/app.js"></script>
 		<script src="https://apis.google.com/js/client.js?onload=init"></script>
 
+		<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	</body>
 </html>
