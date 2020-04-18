@@ -63,7 +63,7 @@ function sortBy(keyword, sortValue) {
     part: "snippet",
     type: "video",
     q: api_keyword,
-    maxResults: 21,
+    maxResults: 24,
     order: sortValue,
     publishedAfter: "2015-01-01T00:00:00Z"
   });
@@ -89,7 +89,7 @@ function resultsLoop(data){
     let time = new Date($.now());
 
     $("#results").append(`
-    <div class="col-md-4">
+    <div class="col-md-4 panel">
       <li>
         <button type="button" class="btn btn-primary video-btn" data-toggle="modal" data-src="http://www.youtube.com/embed/${videoid}" data-target="#myModal">
           <img src="${thumb}" alt="thumbnail image">

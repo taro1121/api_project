@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<title>Tour de France YouTube Collection</title>
 		<meta name="description" content="List of Tour de France related YouTube videos.">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 		<link href="css/style.css" rel="stylesheet" type="text/css"></style>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,16 +15,14 @@
 	<body>
 		<div id="wrapper">
 			<div id="header">
-					<ul id="header-wrap">
+					<ul id="header-wrap" class="font-weight-bold">
 						<div class="row">
-
 							<div class="col-md-6">
 								<li id="header-logo">
-									<span>Tour de France YouTube Collection</span>
+									<h5>Tour de France YouTube Collection</h5>
 									<!-- <a><img id="NewLogo" src="NewLogoB.png"></a> -->
 								</li>
 							</div>
-
 							<div class="col-md-6">
 								<li id="header-search">
 									<form action="/" method="POST" class="search_container">
@@ -32,9 +31,7 @@
 									</form>
 								</li>
 							</div>
-
 						</div>
-
 					</ul>
 			</div>
 
@@ -47,18 +44,7 @@
 						<li><div id="byrating" class="sort"><a href="/">Rating</a></div></li>
 						<li><div id="byrelevance" class="sort"><a href="/">Relevance</a></div></li>
 					</ul>
-
-					<br>
 					<div class=row id="results"></div>
-
-					<!-- <div id="page-field">
-						<ul class="page-navi">
-							<li>Total</li>
-							<br>
-							<li>Previous</li>
-							<li>Next</li>
-						</ul>
-					</div> -->
 				</div>
 			</div>
 			<div id="footer">
