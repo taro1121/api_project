@@ -118,7 +118,7 @@ function resultsLoop(data){
 function init() {
   gapi.client.setApiKey("AIzaSyDAPShIt5LqMJq6FjwxUKiPADBzeN15ck8a");
   gapi.client.load("youtube", "v3", function() {
-    // search();
+    search();
   });
 }
 
