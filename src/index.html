@@ -8,7 +8,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 		<link href="css/style.css" rel="stylesheet" type="text/css"></style>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+		<script src="https://kit.fontawesome.com/e56564013c.js" crossorigin="anonymous"></script>
 		<link rel="icon" href="img/favicon.png">
 	</head>
 
@@ -42,7 +43,9 @@
 						<li><div id="byrating" class="sort"><a href="/">Rating</a></div></li>
 						<li><div id="byrelevance" class="sort"><a href="/">Relevance</a></div></li>
 					</ul>
-					<div class=row id="results"><div class="h5 col-md-12 text-danger" id="error-msg">Sorry unable to reach Google API.  Please check the credential an refresh the page.</div></div>
+					<div class="row" id="results">
+							<i class="fas fa-spinner fa-spin fa-5x"></i>
+					</div>
 				</div>
 			</div>
 			<div id="footer">
