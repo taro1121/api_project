@@ -1,5 +1,14 @@
 # api_project
 
+### HOW TO USE ###
+1. Place unzipped file anywhere (i.e. under /Documents).
+2. From Terminal go to the unzipped folder and run 'npm install'
+3. Run 'node server.js' to start server
+4. Go to 'loclahost:8081' from browser
+######
+
+
+
 This is the repository for Shintaro's API project.
 
 Project Name: Shintaro's Bicycle YouTube channel.
