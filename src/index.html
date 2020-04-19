@@ -2,15 +2,16 @@
 <html lang="en">
 	<head>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-		<meta charset="utf-8">
+		<link href="css/style.css" rel="stylesheet" type="text/css"></style>
+		<link rel="icon" href="img/favicon.png">
 		<title>Tour de France YouTube Collection</title>
+		<meta charset="utf-8">
 		<meta name="description" content="List of Tour de France related YouTube videos.">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-		<link href="css/style.css" rel="stylesheet" type="text/css"></style>
-		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+		<!-- <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script> -->
 		<script src="https://kit.fontawesome.com/e56564013c.js" crossorigin="anonymous"></script>
-		<link rel="icon" href="img/favicon.png">
+
+		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 	</head>
 
 	<body>
@@ -25,7 +26,7 @@
 							</div>
 							<div class="col-md-6">
 								<li id="header-search">
-									<form action="/" method="POST" class="search_container">
+									<form id="search_form" action="/" method="POST" class="search_container">
 										<input type="text" id="search" name="keyword" value class="search-box" placeholder="Keyword Search" maxlength="20" style="width: 200px; height: 40px">
 										<input type="submit" value="Search">
 									</form>
@@ -39,9 +40,9 @@
 					<ul class="dmenu">
 						<li>Sort by</li>
 						<li><div id="bydate" class="sort" value="date"><a href="/">Date</a></div></li>
-						<li><div id="byviewcount" class="sort" value="viewCount"><a href="/">Views Count</a></div></li>
-						<li><div id="byrating" class="sort"><a href="/">Rating</a></div></li>
-						<li><div id="byrelevance" class="sort"><a href="/">Relevance</a></div></li>
+						<li><div id="byviewcount" class="sort" value="viewCount"><a href="/">View Count</a></div></li>
+						<li><div id="byrating" class="sort" value"rating"><a href="/">Rating</a></div></li>
+						<li><div id="byrelevance" class="sort" value="relevance"><a href="/">Relevance</a></div></li>
 					</ul>
 					<div class="row" id="results">
 							<i class="fas fa-spinner fa-spin fa-5x"></i>

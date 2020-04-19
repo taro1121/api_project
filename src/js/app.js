@@ -2,10 +2,10 @@ const base_keyword = "Cycling+Tour+de+France+";
 let $videoSrc;
 
 $(document).ready(function() {
-  // initDummyLoad(); //for DEV purpose.  comment out "Ln121 search()" to save resource.
+  initDummyLoad(); //for DEV purpose.  comment out "Ln121 search()" to save resource.
 
 // When user click search btn, render "Tour de France" videos (24) with the keyword ordered by date.
-  $("form").on("submit", function(e) {
+  $("#search_form").on("submit", function(e) {
     e.preventDefault();
     search();
   });
@@ -26,7 +26,6 @@ $(document).ready(function() {
   $('#myModal').on('hide.bs.modal', function (e) {
     $("#video").attr('src',$videoSrc);
   })
-
   $(window).on("resize", resetVideoHeight);//work on later
 });
 
@@ -104,7 +103,6 @@ function resultsLoop(data){
       </li>
     </div>
     `);
-
     $("#footer-modify").html(`<p>Last Updated: ${time}`);
 
 // Get video link every time #result is rendered.
@@ -118,9 +116,11 @@ function resultsLoop(data){
 function init() {
   gapi.client.setApiKey("AIzaSyDAPShIt5LqMJq6FjwxUKiPADBzeN15ck8");
   gapi.client.load("youtube", "v3", function() {
-    search();
+    // search();
   });
 }
+
+
 
 //DEV test purpose.
 function initDummyLoad() {
