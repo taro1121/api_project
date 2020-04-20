@@ -1,4 +1,5 @@
 const base_keyword = "Cycling+Tour+de+France+";
+const base_sort = "date";
 let $videoSrc;
 
 $(document).ready(function() {
@@ -32,19 +33,21 @@ $(document).ready(function() {
 // base search fn.  search by base + custom keyword and sort by date (up to 24).
 function search() {
   let keyword = base_keyword + encodeURIComponent($("#search").val()).replace(/%20/g, "+");
-  let request = gapi.client.youtube.search.list({
-    part: "snippet",
-    type: "video",
-    q: keyword,
-    maxResults: 24,
-    order: "date",// "rating" "relevance" "title" "videoCount" "viewCount",
-    publishedAfter: "2015-01-01T00:00:00Z"
-  });
-  request.execute(function(response) {
-    var results = response.result;
-      resultsLoop(results);
-      resetVideoHeight();
-  });
+  createRequest(keyword, base_sort);
+  // let request = gapi.client.youtube.search.list({
+  //   part: "snippet",
+  //   type: "video",
+  //   q: keyword,
+  //   maxResults: 24,
+  //   order: "date",// "rating" "relevance" "title" "videoCount" "viewCount",
+  //   publishedAfter: "2015-01-01T00:00:00Z"
+  // });
+  // request.execute(function(response) {
+  //   let results = response.result;
+  //     resultsLoop(results);
+  //     resetVideoHeight();
+  // });
+
 }
 
 // fn to copy keyword in the search box.
@@ -55,9 +58,29 @@ function copyKeyword() {
 
 // fn to sort by the menu label and custom keyword.
 function sortBy(keyword, sortValue) {
-  if (!keyword) {
-    keyword = "";
-  }
+  // if (!keyword) {
+  //   keyword = "";
+  // }
+    createRequest(keyword, sortValue);
+  // let api_keyword = base_keyword + keyword;
+  // let request = gapi.client.youtube.search.list({
+  //   part: "snippet",
+  //   type: "video",
+  //   q: api_keyword,
+  //   maxResults: 24,
+  //   order: sortValue,
+  //   publishedAfter: "2015-01-01T00:00:00Z"
+  // });
+  // request.execute(function(response) {
+  //   let results = response.result;
+  //     $("#results").html("");
+  //     resultsLoop(results);
+  //     resetVideoHeight();
+  // });
+
+}
+
+function createRequest(keyword, sortValue) {
   let api_keyword = base_keyword + keyword;
   let request = gapi.client.youtube.search.list({
     part: "snippet",
@@ -68,7 +91,7 @@ function sortBy(keyword, sortValue) {
     publishedAfter: "2015-01-01T00:00:00Z"
   });
   request.execute(function(response) {
-    var results = response.result;
+    let results = response.result;
       $("#results").html("");
       resultsLoop(results);
       resetVideoHeight();
@@ -114,12 +137,11 @@ function resultsLoop(data){
 
 // set up google api.
 function init() {
-  gapi.client.setApiKey("AIzaSyDAPShIt5LqMJq6FjwxUKiPADBzeN15ck8");
+  gapi.client.setApiKey("");
   gapi.client.load("youtube", "v3", function() {
     // search();
   });
 }
-
 
 
 //DEV test purpose.
@@ -129,7 +151,6 @@ function initDummyLoad() {
     resultsLoop(results_data);
   });
 }
-
 // for mobile.  Work on later.
 function resetVideoHeight() {
   $(".video").css("height", $("#results").width() * 9/16)
